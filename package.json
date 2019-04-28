@@ -1,0 +1,30 @@
+{
+  "name": "twitterserver",
+  "version": "1.0.0",
+  "description": "Application server for Twitter app",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon src/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ravimaharjan/twitterserver.git"
+  },
+  "author": "Ravi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ravimaharjan/twitterserver/issues"
+  },
+  "homepage": "https://github.com/ravimaharjan/twitterserver#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.18.3",
+    "cors": "^2.8.5",
+    "express": "^4.16.4",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.4.22",
+    "morgan": "^1.9.1",
+    "nodemon": "^1.18.11",
+    "twit": "^2.2.11"
+  }
+}
