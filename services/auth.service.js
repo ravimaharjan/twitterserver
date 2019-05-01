@@ -93,6 +93,7 @@ function jwtSignAsync(payload, secret, options) {
 }
 
 function authenticatePromise(userParams) {
+    console.log(userParams)
     return User.findOne({ username: userParams.username })
         .then(user => {
             if (!user) {

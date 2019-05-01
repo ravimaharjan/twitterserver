@@ -32,8 +32,6 @@ authRouter.post('/register', (req, res) => {
 
 
 function authenticate(req, res) {
-    console.log("auth request called")
-    console.log(req.body)
     if (!req.body) {
         return res.status(400).send({
             status: 'error',
@@ -41,9 +39,8 @@ function authenticate(req, res) {
         })
     }
     authService.authenticatePromise(req.body)
-        .then(user => {
-            console.log(user)
-            return user ? res.json({ success: true, message: 'login successful', user: user }) :
+        .then(loginData => {
+            return loginData ? res.json({ success: true, message: 'login successful', loginData: loginData }) :
                 res.status(404).send({ message: 'username or password incorrect' })
         })
         .catch(error => {

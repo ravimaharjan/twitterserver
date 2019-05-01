@@ -4,7 +4,6 @@ const config = require('../config')
 const tweetdomain = require('../domain/tweets')
 
 tweetRoutes.get('/', (req, res) => {
-    console.log('tweets')
     const T = new Twit(config)
     T.get('search/tweets', {q: 'a'},function(err, data, response){
         if (!err){
@@ -14,8 +13,6 @@ tweetRoutes.get('/', (req, res) => {
                 // console.log(tweetdomain.getTweetSummary(tweet))
                 return tweetdomain.getTweetSummary(tweet)
             })
-
-            // res.send("Hello Node.")
             return res.status(200).json({"tweets": tweet_result})
         }
         else{

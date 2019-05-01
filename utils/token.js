@@ -2,9 +2,7 @@ const config = require('../config');
 const jwt = require('jsonwebtoken')
 
 module.exports = function(req, res, next) {
-    console.log(req.body)
-    console.log(req.query)
-    const token = req.body.token || req.query.token || req.headers['token'];
+    const token = req.body.token || req.query.token || req.headers['authorization'];
     // return new Promise((resolve, reject) => {
         if (token) {
             jwt.verify(token, config.secret, function (err, decoded) {
@@ -12,13 +10,10 @@ module.exports = function(req, res, next) {
                      res.json({ "error": true, "message": 'Failed to authenticate token.' });
                 }
                 else {
-                    
-                    // res.json({
-                    //     message: "Valid Token."
-                    // })
+                    next();
                 }
             })
-            next();
+            
         }
         else {
             return res.status(403).send({

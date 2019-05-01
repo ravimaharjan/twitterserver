@@ -17,11 +17,13 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json())
 
 app.use('/api/v1/auth', auth)
+app.use(jwt);
+
 
 app.use("/", routes);
 app.use('/api/v1/user', users)
 app.use("/api/v1/tweets/", tweets);
-app.use(jwt);
+
 
 mongoose.connect(config.mongo_connection_string, { useCreateIndex: true, useNewUrlParser: true }).then(() => {
     console.log('Successfully connected to the mongo dtabase')
