@@ -11,7 +11,9 @@ module.exports = {
 }
 function createNewUser (userParams) {
     return userService.createUser(userParams)
-        .then(response => response)
+        .then(response => {
+            return response
+        })
         .catch(error => {
             console.log(error)
             return error

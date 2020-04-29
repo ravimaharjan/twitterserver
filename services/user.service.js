@@ -18,7 +18,7 @@ async function createUser (userParam) {
         email: userParam.email
     })
 
-    await user.save()
+    return await user.save()
 }
 
 async function getAll () {
