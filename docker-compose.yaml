@@ -6,10 +6,6 @@ services:
       - ".db/mongodb/twitterdb:/data/db"
     ports:
       - "27017:27017"
-    # environment:
-      # MONGO_INITDB_ROOT_USERNAME: admin
-      # MONGO_INITDB_ROOT_PASSWORD: admin
-      # MONGO_INITDB_DATABASE: twitterapp
     networks:
       - "twitter_network"
 
