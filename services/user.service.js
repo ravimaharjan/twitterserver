@@ -4,9 +4,9 @@ const User = require('../models/user.model')
 module.exports = {
     createUser,
     getAll
-};
-async function createUser(userParam) {
-    console.log(userParam)
+}
+
+async function createUser (userParam) {
     if (await User.findOne({ username: userParam.username })) {
         throw 'Username "' + userParam.username + '" is already taken';
     }
@@ -16,11 +16,11 @@ async function createUser(userParam) {
         lastname: userParam.lastname,
         passwordhash: bcrypt.hashSync(userParam.password, 10),
         email: userParam.email
-    });
+    })
 
-    await user.save();
+    await user.save()
 }
 
-async function getAll(){
-    await User.find().select('-hash');
+async function getAll () {
+    await User.find().select('-hash')
 }
