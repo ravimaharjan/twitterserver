@@ -4,7 +4,7 @@ const jwt = require('jsonwebtoken')
 module.exports = function (req, res, next) {
     const token = req.body.token || req.query.token || req.headers.authorization
     if (token) {
-        jwt.verify(token, config.secret, function (err, decoded) {
+        jwt.verify(token, config.app_secret, function (err, decoded) {
             if (err) {
                 res.json({ status: 401, message: 'Failed to authenticate token.' })
             } else {

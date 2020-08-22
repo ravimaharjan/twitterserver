@@ -6,6 +6,7 @@ module.exports = {
     getAll
 }
 
+
 async function createUser (userParam) {
     if (await User.findOne({ username: userParam.username })) {
         throw 'Username "' + userParam.username + '" is already taken';

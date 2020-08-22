@@ -3,9 +3,12 @@ const Twit = require('twit')
 const config = require('../config')
 const tweetdomain = require('../domain/tweets')
 
+/**
+ * Returns tweets
+ */
 tweetRoutes.get('/', (req, res) => {
     const T = new Twit(config)
-    T.get('search/tweets', { q: 'a' }, function (err, data, response) {
+    T.get('search/tweets', { q: 'a', count: 25}, function (err, data, response) {
         if (!err) {
             const tweetData = data.statuses
             const tweetResult = tweetData.map((tweet) => {
@@ -19,6 +22,9 @@ tweetRoutes.get('/', (req, res) => {
     })
 })
 
+/**
+ * Returns tweet results based on the tweetkey passed
+ */
 tweetRoutes.get('/:tweetkey', (req, res) => {
     const T = new Twit(config)
     T.get('search/tweets', { q: req.params.tweetkey }, function (err, data, response) {
